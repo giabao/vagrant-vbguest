@@ -11,7 +11,7 @@ Requires vagrant 0.9.4 or later (including 1.x)
 ### Vagrant ≥ 1.1
 
 ```bash
-$ vagrant plugin install vagrant-vbguest
+$ vagrant plugin install vagrant-vbguest-update
 ```
 
 ### Vagrant 1.0 and older
@@ -265,3 +265,17 @@ end
 * The installer script requires a directory `/mnt` on the guest system
 * On multi vm boxes, the iso file will be downloaded for each vm
 * The plugin installation on Windows host systems may not work as expected (using `vagrant gem install vagrant-vbguest`). Try `C:\vagrant\vagrant\embedded\bin\gem.bat install vagrant-vbguest` instead. (See [issue #19](https://github.com/dotless-de/vagrant-vbguest/issues/19#issuecomment-7040304))
+
+## Building
+(in CentOS)
+
+```
+sudo yum install rubygems ruby-devel
+sudo gem install bundler -v '1.10.5'
+cd /tmp
+git clone https://github.com/giabao/vagrant-vbguest.git
+cd vagrant-vbguest
+bundle install
+rake build
+gem push pkg/vagrant-vbguest-update-0.10.1.dev.gem
+```
